@@ -74,6 +74,8 @@ An Availability Zone is a distinct location within an AWS Region that is enginee
    - Leave other options as default.
 4. Click **Create VPC**.
 
+   ![1](https://github.com/user-attachments/assets/fa02b3e3-a690-4bd8-96d8-52c3e153f1d2)
+
 ### Step 2: Create Subnets
 
 #### Zone A
@@ -88,6 +90,8 @@ An Availability Zone is a distinct location within an AWS Region that is enginee
 4. Repeat the process to create `Private-Subnet-1`:
    - **Availability Zone**: `us-east-1a`.
    - **CIDR Block**: `10.0.0.128/26`.
+  
+     ![2](https://github.com/user-attachments/assets/a0819e1f-66ce-415d-a1f1-283c271b7b3b)
 
 #### Zone B
 
@@ -97,6 +101,8 @@ An Availability Zone is a distinct location within an AWS Region that is enginee
 2. Create `Private-Subnet-2`:
    - **Availability Zone**: `us-east-1b`.
    - **CIDR Block**: `10.0.0.192/26`.
+  
+     ![3](https://github.com/user-attachments/assets/02fb8da6-2451-42ff-961f-39e4ad869791)
 
 ### Step 3: Create an Internet Gateway (IGW)
 
@@ -106,6 +112,8 @@ An Availability Zone is a distinct location within an AWS Region that is enginee
 3. Click **Create**.
 4. Attach the IGW to `My-VPC`:
    - Select the IGW → **Actions** → **Attach to VPC** → Choose `My-VPC`.
+  
+     ![4](https://github.com/user-attachments/assets/a4b63577-ae90-4996-bbf3-47d82ebf71f1)
 
 ### Step 4: Create a Virtual Private Gateway (VPG)
 
@@ -116,6 +124,8 @@ An Availability Zone is a distinct location within an AWS Region that is enginee
 3. Click **Create**.
 4. Attach the VPG to `My-VPC`:
    - Select the VPG → **Actions** → **Attach to VPC** → Choose `My-VPC`.
+  
+     ![5](https://github.com/user-attachments/assets/55136eb7-84c3-4cdf-9799-fee28a0592bd)
 
 ### Step 5: Configure Route Tables
 
@@ -132,6 +142,8 @@ An Availability Zone is a distinct location within an AWS Region that is enginee
    - **Target**: Select `My-IGW`.
 4. Associate public subnets with the route table:
    - **Subnet Associations** → **Edit Subnet Associations** → Select `Public-Subnet-1` and `Public-Subnet-2`.
+  
+     ![6](https://github.com/user-attachments/assets/cafd1dc1-e305-4931-a7d6-1a8d0fd92873)
 
 #### Private Route Table
 
@@ -143,6 +155,8 @@ An Availability Zone is a distinct location within an AWS Region that is enginee
    - Select the route table → **Route Propagation** tab → **Edit Route Propagation** → Select `My-VPG`.
 3. Associate private subnets with the route table:
    - **Subnet Associations** → **Edit Subnet Associations** → Select `Private-Subnet-1` and `Private-Subnet-2`.
+  
+     ![7](https://github.com/user-attachments/assets/a2f75bbd-c606-477b-adf0-3b46ba5fe74d)
 
 ### Step 6: Launch EC2 Instances
 
@@ -174,12 +188,16 @@ An Availability Zone is a distinct location within an AWS Region that is enginee
 
 2. Repeat the process for `Private-Subnet-2`, selecting the corresponding subnet.
 
+   ![8](https://github.com/user-attachments/assets/c033d28c-676d-4d18-8599-db2036ea79c7)
+
 ---
 
 ## Testing and Verification
 - Verify public instances have internet access via their public IPs.
 - Ensure private instances communicate only via the VPG.
 - Use SSH or ping to test connectivity between instances.
+
+  ![9](https://github.com/user-attachments/assets/5ec5fd2d-4b50-4533-bdbd-1e27b0be6118)
 
 ---
 
